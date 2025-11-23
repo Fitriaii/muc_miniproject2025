@@ -17,8 +17,6 @@ class ProposalController extends Controller
     public function index()
     {
         $proposals = ProposalModel::get();
-
-
         return view('proposal::index', compact('proposals'));
     }
 

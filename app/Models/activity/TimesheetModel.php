@@ -15,13 +15,24 @@ class TimesheetModel extends Model
     protected $connection = 'mysql_activity';
     protected $table = 'timesheet'; // atau nama table yang sesuai
 
+    protected $fillable = [
+        'date',
+        'employee_id',
+        'serviceused_id',
+        'proposal_id',
+        'timestart',
+        'timefinish',
+        'description',
+        'status'
+    ];
+
     public function employee()
     {
-        return $this->belongsTo(EmployeesModel::class, 'employee_id');
+        return $this->belongsTo(EmployeesModel::class, 'employees_id', 'id');
     }
 
     public function serviceused()
     {
-        return $this->belongsTo(ServiceusedModel::class, 'serviceused_id');
+        return $this->belongsTo(ServiceusedModel::class, 'serviceused_id', 'id');
     }
 }
