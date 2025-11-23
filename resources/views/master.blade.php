@@ -83,7 +83,7 @@
                       <a class="nav-link {{ request()->is('proposal*') ? 'active' : '' }}" href="{{ route('proposal.index') }}">Proposal</a>
                     </li>
                     <li class="nav-item">
-                      <a class="page-scroll" href="">Serviceused</a>
+                      <a class="nav-link {{ request()->is('serviceused*') ? 'active' : '' }}" href="{{ route('serviceused.index') }}">Serviceused</a>
                     </li>
 
                     <li class="nav-item">

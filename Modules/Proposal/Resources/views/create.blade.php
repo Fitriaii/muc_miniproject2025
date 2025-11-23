@@ -28,6 +28,7 @@
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select class="form-select" id="status" name="status" required>
+                            <option value="" disabled selected>Pilih Status</option>
                             <option value="pending">Pending</option>
                             <option value="agreed">Agreed</option>
                             <option value="rejected">Rejected</option>

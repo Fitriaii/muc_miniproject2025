@@ -19,4 +19,8 @@ class ProposalModel extends Model
         'status'
     ];
 
+    public function serviceused()
+    {
+        return $this->hasMany(ServiceusedModel::class, 'proposal_id','id');
+    }
 }

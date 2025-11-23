@@ -1,0 +1,13 @@
+{
+    "name": "Serviceused",
+    "alias": "serviceused",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Serviceused\\Providers\\ServiceusedServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
