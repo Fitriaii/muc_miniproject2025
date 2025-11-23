@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('proposal')->group(function() {
     Route::get('/index', 'ProposalController@index')->name('proposal.index');
+    Route::get('/create', 'ProposalController@create')->name('proposal.create');
+    Route::post('/store', 'ProposalController@store')->name('proposal.store');
 });

@@ -1,18 +1,27 @@
 @extends('master')
 
 @section('content')
-    <div class="row mb-3">
+    <div class="row mb-4">
         <div class="col-md-12">
-            <h2>Proposal List</h2>
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0 fw-bold text-dark">Proposal List</h2>
+            </div>
         </div>
     </div>
+
 
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>All Proposal</span>
-                    <!-- <a href="{{ url('proposal/create') }}" class="btn btn-primary btn-sm">Add New Proposal</a> -->
+
+                    <a href="{{ route('proposal.create') }}" class="btn btn-purple d-inline-flex align-items-center gap-2 px-4 py-2" data-bs-toggle="modal" data-bs-target="#createProposal">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        Tambah Proposal
+                    </a>
                 </div>
                 <div class="card-body">
                     @if($proposals->count() > 0)
@@ -37,6 +46,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
                         </div>
 
                     @else
@@ -48,4 +58,7 @@
             </div>
         </div>
     </div>
+
+    @include('proposal::create')
+
 @endsection

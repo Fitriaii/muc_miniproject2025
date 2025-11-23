@@ -6,6 +6,7 @@ use App\Models\marketing\ProposalModel;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ProposalController extends Controller
 {
@@ -27,17 +28,42 @@ class ProposalController extends Controller
      */
     public function create()
     {
-        return view('proposal::create');
+        $proposals = ProposalModel::get();
+        return view('proposal::create', compact('proposals'));
     }
 
     /**
      * Store a newly created resource in storage.
      * @param Request $request
-     * @return Renderable
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'number' => 'required|string|max:255',
+            'year' => 'required|integer|min:2000|max:2100',
+            'description' => 'required|string|max:255',
+            'status' => 'required|string|in:pending,agreed,rejected',
+        ]);
+
+        try {
+            $proposal = new ProposalModel();
+            $proposal->number = $request->number;
+            $proposal->year = $request->year;
+            $proposal->description = $request->description;
+            $proposal->status = $request->status;
+            $proposal->save();
+
+            return redirect()->route('proposal.index')->with([
+                'status' => 'success',
+                'message' => 'Proposal created successfully.',
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->route('proposal.index')->with([
+                'status' => 'error',
+                'message' => 'An error occurred while saving the proposal.',
+            ]);
+        }
     }
 
     /**

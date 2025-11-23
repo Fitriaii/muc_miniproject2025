@@ -1067,6 +1067,23 @@ p {
   color: #b89cfe;
 }
 
+.btn-purple {
+    background-color: #eff6ff;
+    color: #2563eb;
+    border: 1px solid #dbeafe;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-purple:hover {
+    background-color: #eff6ff;
+    border-color: #dbeafe;
+    color: #2563eb;
+}
+
 /* ===== about css ====== */
 .about-section {
   position: relative;
