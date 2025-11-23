@@ -14,5 +14,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('proposal')->group(function() {
-    Route::get('/index', 'ProposalController@index');
+    Route::get('/index', 'ProposalController@index')->name('proposal.index');
 });

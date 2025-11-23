@@ -21,4 +21,6 @@ Route::prefix('employees')->group(function() {
     Route::get('/{id}/edit', 'EmployeesController@edit')->name('employees.edit');
     Route::put('/{id}', 'EmployeesController@update')->name('employees.update');
     Route::delete('/{id}', 'EmployeesController@destroy')->name('employees.destroy');
+    Route::put('/employees/update-status/{id}', 'EmployeesController@updateStatus')->name('employees.update.status');
+
 });

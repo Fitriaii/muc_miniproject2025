@@ -67,6 +67,17 @@ class EmployeesController extends Controller
         return view('employees::edit');
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        $employee = EmployeesModel::findOrFail($id);
+
+        $employee->status = $request->status;
+        $employee->save();
+
+        return redirect()->back()->with('success', 'Status updated successfully!');
+    }
+
+
     /**
      * Update the specified resource in storage.
      * @param Request $request

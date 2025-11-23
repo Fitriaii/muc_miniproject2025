@@ -54,27 +54,32 @@
   // section menu active
   function onScroll(event) {
     const sections = document.querySelectorAll(".page-scroll");
-    const scrollPos =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop;
+    const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
 
-    for (let i = 0; i < sections.length; i++) {
-      const currLink = sections[i];
-      const val = currLink.getAttribute("href");
-      const refElement = document.querySelector(val);
-      const scrollTopMinus = scrollPos + 73;
-      if (
-        refElement.offsetTop <= scrollTopMinus &&
-        refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
-      ) {
-        document.querySelector(".page-scroll").classList.remove("active");
-        currLink.classList.add("active");
-      } else {
-        currLink.classList.remove("active");
-      }
-    }
-  }
+    sections.forEach((currLink) => {
+        const val = currLink.getAttribute("href");
+
+        // ⛔ Abaikan link yang bukan anchor (#)
+        if (!val || !val.startsWith("#")) return;
+
+        const refElement = document.querySelector(val);
+        if (!refElement) return;
+
+        const scrollTopMinus = scrollPos + 73;
+
+        if (
+            refElement.offsetTop <= scrollTopMinus &&
+            refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
+        ) {
+            document.querySelectorAll(".page-scroll.active")
+                .forEach(el => el.classList.remove("active"));
+            currLink.classList.add("active");
+        } else {
+            currLink.classList.remove("active");
+        }
+    });
+}
+
 
   window.document.addEventListener("scroll", onScroll);
 
