@@ -41,7 +41,7 @@ class ServiceusedController extends Controller
         $request->validate([
             'proposal_id' => 'required|exists:mysql_marketing.proposal,id',
             'service_name' => 'required|string|max:255',
-            'status' => 'required|string|in:pending, ongoing, done',
+            'status' => 'required|string|in:pending,ongoing,done',
         ]);
 
         try {

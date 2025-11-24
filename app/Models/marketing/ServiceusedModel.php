@@ -37,15 +37,7 @@ class ServiceusedModel extends Model
         $hours = floor($totalMinutes / 60);
         $minutes = $totalMinutes % 60;
 
-        if ($hours > 0 && $minutes > 0) {
-            return "{$hours}h {$minutes}m";
-        } elseif ($hours > 0) {
-            return "{$hours}h";
-        } elseif ($minutes > 0) {
-            return "{$minutes}m";
-        }
-
-        return "0m";
+        return sprintf('%02d:%02d', $hours, $minutes);
     }
 
 
